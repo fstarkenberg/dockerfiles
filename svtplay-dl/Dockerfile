@@ -12,6 +12,7 @@ run set -xe \
         py-pip \
         ffmpeg \
         rtmpdump \
+        py-requests \
     && pip install pycrypto svtplay-dl==$VERSION
 
 WORKDIR /data
