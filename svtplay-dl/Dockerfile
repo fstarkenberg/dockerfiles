@@ -1,6 +1,6 @@
 FROM alpine
 MAINTAINER fresta
-ARG VERSION=1.9.7
+ARG VERSION=1.9.9
 
 run set -xe \
     && apk add --no-cache \
