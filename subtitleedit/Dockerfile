@@ -13,8 +13,8 @@ RUN \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir /SubtitleEdit \
-    && wget https://github.com/SubtitleEdit/subtitleedit/releases/download/3.5.4/SE354.zip \
-    && unzip -d /SubtitleEdit SE354.zip
+    && wget https://github.com/SubtitleEdit/subtitleedit/releases/download/3.5.9/SE359.zip \
+    && unzip -d /SubtitleEdit SE359.zip
 
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
