@@ -1,1 +1,0 @@
-mono /SubtitleEdit/SubtitleEdit.exe

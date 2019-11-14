@@ -1,20 +1,27 @@
-FROM hurricane/dockergui:x11rdp
-MAINTAINER fresta
+FROM lsiobase/guacgui
+LABEL maintainer="fresta"
 
-ENV APP_NAME="SubtitleEdit" WIDTH=1920 HEIGHT=1080 USER_ID=0 GROUP_ID=0 UMASK=0000
+ENV APP_NAME="subtitleedit"
 
-# Use baseimage-docker's init system
-CMD ["/sbin/my_init"]
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN \
-    apt-get update --quiet \
-    && apt-get install --quiet --yes mono-xsp4 \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* \
-    && mkdir /SubtitleEdit \
-    && wget https://github.com/SubtitleEdit/subtitleedit/releases/download/3.5.11/SE3511.zip \
-    && unzip -d /SubtitleEdit SE3511.zip
+  echo "**** install runtime packages ****" && \
+  apt-get update --quiet && \
+  apt-get install --quiet --yes --no-install-recommends \
+    wget \
+    unzip \
+    mono-xsp4 && \
+  echo "**** install subtitleedit ****" && \
+  mkdir /SubtitleEdit && \
+  wget https://github.com/SubtitleEdit/subtitleedit/releases/download/3.5.11/SE3511.zip && \
+  unzip -d /SubtitleEdit SE3511.zip && \
+  echo "**** cleanup ****" && \
+  apt-get clean && \
+  rm -rf \
+    /tmp/* \
+    /var/lib/apt/lists/* \
+    /var/tmp/*
 
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
@@ -23,4 +30,5 @@ ENV LC_ALL en_US.UTF-8
 
 EXPOSE 3389 8080
 
-COPY startapp.sh /
+# add local files
+COPY /root /
