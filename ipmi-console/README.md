@@ -1,7 +1,7 @@
 Container for accessing IPMI/OOB consoles, designed to work with as many servers as possible.
 
 # Running
-`docker run --rm -it -p 8080:8080 fresta/ipmi-console`
+`docker run --rm -it -p 8080:8080 fresta/ipmi-console`  
 Go to http://127.0.0.1:8080/vnc.html in your browser and press "Connect".  
 Use firefox in the container and connect to your IPMI console.
 
